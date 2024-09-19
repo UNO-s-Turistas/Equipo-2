@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Vuelos</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Búsqueda de Vuelos</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilos añadidos -->
 </head>
 <body>
-    <h1>Buscar Vuelos</h1>
-    <form id="searchForm">
-        <label for="origin">Origen:</label>
-        <input type="text" id="origin" name="origin" required><br><br>
-        <label for="destination">Destino:</label>
-        <input type="text" id="destination" name="destination" required><br><br>
-        <input type="submit" value="Buscar">
-    </form>
-    <div id="results"></div>
-
-    <script src="scripts.js"></script>
+    <header>
+        <h1>Buscar Vuelos</h1>
+    </header>
+    <div class="container">
+        <form action="search_flights.php" method="post">
+            <label for="origin">Origen:</label>
+            <input type="text" id="origin" name="origin" required>
+            <label for="destination">Destino:</label>
+            <input type="text" id="destination" name="destination" required>
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+    <footer>
+        <p>Todos los derechos reservados &copy; 2024</p>
+    </footer>
+    <script src="scripts.js"></script> <!-- Scripts añadidos -->
 </body>
 </html>
