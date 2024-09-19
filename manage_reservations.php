@@ -1,26 +1,34 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "flight_reservation";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Obtener reservas
-$user_id = $_POST['user_id'];
-$sql = "SELECT * FROM Reservations WHERE user_id='$user_id'";
-$result = $conn->query($sql);
-$reservations = [];
-while ($row = $result->fetch_assoc()) {
-    $reservations[] = $row;
-}
-echo json_encode($reservations);
-
-$conn->close();
-?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Reservas</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilos añadidos -->
+</head>
+<body>
+    <header>
+        <h1>Gestionar Reservas</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID de Reserva</th>
+                    <th>Nombre del Pasajero</th>
+                    <th>Vuelo</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán dinámicamente las filas de las reservas a gestionar -->
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>Todos los derechos reservados &copy; 2024</p>
+    </footer>
+    <script src="scripts.js"></script> <!-- Scripts añadidos -->
+</body>
+</html>
