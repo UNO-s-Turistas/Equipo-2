@@ -1,47 +1,27 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "flight_reservation";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Registro de usuario
-if ($_POST['action'] == 'register') {
-    $user = $_POST['username'];
-    $pass = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $email = $_POST['email'];
-    $sql = "INSERT INTO Users (username, password, email) VALUES ('$user', '$pass', '$email')";
-    if ($conn->query($sql) === TRUE) {
-        echo "Registration successful";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
-
-// Inicio de sesión
-if ($_POST['action'] == 'login') {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
-    $sql = "SELECT password FROM Users WHERE username='$user'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($pass, $row['password'])) {
-            echo "Login successful";
-        } else {
-            echo "Invalid credentials";
-        }
-    } else {
-        echo "No such user";
-    }
-}
-
-$conn->close();
-?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Estilos añadidos -->
+</head>
+<body>
+    <header>
+        <h1>Autenticación</h1>
+    </header>
+    <div class="container">
+        <form action="authenticate.php" method="post">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+    </div>
+    <footer>
+        <p>Todos los derechos reservados &copy; 2024</p>
+    </footer>
+    <script src="scripts.js"></script> <!-- Scripts añadidos -->
+</body>
+</html>
