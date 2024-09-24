@@ -1,9 +1,9 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "flight_reservation";
+$servername = "104.197.73.183";
+$username = "aaron";
+$password = "123";
+$dbname = "registroVuelos";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
